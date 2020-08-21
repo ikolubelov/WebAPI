@@ -9,5 +9,6 @@ namespace Core.Models
 	{
 		public Request Body { get; set; }
 		public string CallBackUrl { get; set; }
+		public string RequestID { get; set; }
 	}
 }

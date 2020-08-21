@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using RestSharp;
 using Core.Models;
+using Core.Enums;
 
 namespace BusinessLogic.Service.Client
 {
@@ -22,10 +23,31 @@ namespace BusinessLogic.Service.Client
 		}
 
 
+		public MyClientResponse CheckRequestStatus(MyClientRequest request)
+		{
+			var url = $"http://example.com/{request.RequestID}";
+			var response = HandleMyClientRequest(url, request, Method.GET);
+
+			return response.StatusCode == HttpStatusCode.OK ?
+			new MyClientResponse(MyClientResponseTypes.Success)
+			{
+				Body = response.Content,
+				Status = HttpStatusCode.OK,
+				Detail = url
+			} :
+			new MyClientResponse(MyClientResponseTypes.Error)
+			{
+				Body = response.Request.ToString(),
+				Status = response.StatusCode,
+				Detail = response.Content
+			};
+		}
+
+
 		public MyClientResponse PostData(MyClientRequest request)
 		{
 			//in real scenario this will be retrieved from db
-			var url = "http://example.com";
+			var url = $"http://example.com";
 			var response = HandleMyClientRequest(url, request, Method.POST);
 
 			//since the reference url is not live - i hardcoded response to OK status 
@@ -34,19 +56,19 @@ namespace BusinessLogic.Service.Client
 			switch (response.StatusCode)
 			{
 				case HttpStatusCode.OK:
-					return new MyClientResponse()
+					return new MyClientResponse(MyClientResponseTypes.Success)
 					{
-						Status = "OK"
+						Status = HttpStatusCode.OK 
 					};
 				case HttpStatusCode.BadRequest:
-					return new MyClientResponse()
+					return new MyClientResponse(MyClientResponseTypes.BadRequest)
 					{
-						Status = "BAD REQUEST"
+						Status = HttpStatusCode.BadRequest
 					};
 				default:
-					return new MyClientResponse()
+					return new MyClientResponse(MyClientResponseTypes.Error)
 					{
-						Status = "ERROR SENDING REQUEST"
+						Status = HttpStatusCode.InternalServerError
 					};
 			}
 		}

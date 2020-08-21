@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,6 +9,16 @@ namespace Core.Models
 {
 	public class MyClientResponse
 	{
-		public string Status { get; set; }
+		public MyClientResponse() {}
+
+		public MyClientResponse(MyClientResponseTypes responseType)
+		{
+			ResponseType = responseType;
+		}
+
+		public MyClientResponseTypes ResponseType { get; set; }
+		public HttpStatusCode Status { get; set; }
+		public string Detail { get; set; }
+		public string Body { get; set; }
 	}
 }

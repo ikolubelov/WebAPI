@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Interfaces;
+using Core.Enums;
 using Core.Models;
 using System;
 using System.Collections.Generic;
@@ -36,12 +37,13 @@ namespace BusinessLogic.Implementations
 			//For the purpose of this exercise client Response has only one property called status which will be returned to the initial caller
 			var response = myClient.PostData(request);
 
-			if (response.Status == "BAD REQUEST" || response.Status == "ERROR SENDING REQUEST")
+			//process response
+			if (response.ResponseType == MyClientResponseTypes.BadRequest || response.ResponseType == MyClientResponseTypes.Error)
 			{
 				//this is the part where we can create error handler class and take care of errors
 				//based on requirements we can log error and other details
 			}
-			else if (response.Status == "OK")
+			else if (response.ResponseType == MyClientResponseTypes.Success)
 			{
 				//this is the part where we can create handler success class
 				//if request is successful - we will save request id and other details in the database
@@ -53,7 +55,27 @@ namespace BusinessLogic.Implementations
 
 		public MyClientResponse CheckRequestStatus(IMyClient myClient, string requestId)
 		{
-			return null;
+			var request = new MyClientRequest()
+			{
+				RequestID = requestId
+			};
+
+			var response = myClient.CheckRequestStatus(request);
+
+			//process response
+			if (response.ResponseType == MyClientResponseTypes.BadRequest || response.ResponseType == MyClientResponseTypes.Error)
+			{
+				//this is the part where we can create error handler class and take care of errors
+				//based on requirements we can log error and other details
+			}
+			else if (response.ResponseType == MyClientResponseTypes.Success)
+			{
+				//this is the part where we can create handler success class
+				//if request is successful - we will save request id and other details in the database
+				//repository method needs to be called in order to save details
+			}
+
+			return response;
 		}
-		}
+	}
 }

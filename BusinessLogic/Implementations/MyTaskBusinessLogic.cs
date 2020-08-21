@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net;
 using BusinessLogic.Interfaces;
+using Core.Enums;
 using Core.Models;
 
 namespace BusinessLogic.Implementations
@@ -25,8 +27,10 @@ namespace BusinessLogic.Implementations
 		/// <returns>status of request</returns>
 		public string PostData(Request request)
 		{
+			//generate unique id
 			var requestId = Guid.NewGuid().ToString();
-			return MyClientBusinessLogic.StartPostingProcess(MyClient, request, requestId).Status;
+
+			return MyClientBusinessLogic.StartPostingProcess(MyClient, request, requestId).ResponseType == MyClientResponseTypes.Success ? "SUCCESS" : "ERROR";
 		}
 
 		/// <summary>
@@ -56,7 +60,9 @@ namespace BusinessLogic.Implementations
 		/// <returns>client response object</returns>
 		public MyClientResponse CheckRequestStatus(string requestId)
 		{
-			return null;
+			//here we can check of this is valid request and if it exists in db
+
+			return MyClientBusinessLogic.CheckRequestStatus(MyClient, requestId);
 		}
 	}
 }

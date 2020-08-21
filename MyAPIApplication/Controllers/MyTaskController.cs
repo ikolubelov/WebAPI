@@ -49,7 +49,7 @@ namespace WebApplication1.Controllers
 		/// </summary>
 		/// <param name="requestId">unique reuest Identifier</param>
 		/// <returns>status of request</returns>
-		[HttpGet("Status/{requestId}")]
+		[HttpGet("CheckStatus/{requestId}")]
 		public MyClientResponse CheckRequestStatus(string requestId)
 		{
 			return BusinessLogic.CheckRequestStatus(requestId);
