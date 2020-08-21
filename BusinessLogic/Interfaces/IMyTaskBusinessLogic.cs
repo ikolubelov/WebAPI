@@ -10,5 +10,6 @@ namespace BusinessLogic.Interfaces
 	{
 		string PostData(Request request);
 		string ProcessCallBack(string requestId);
+		MyClientResponse CheckRequestStatus(string requestId);
 	}
 }

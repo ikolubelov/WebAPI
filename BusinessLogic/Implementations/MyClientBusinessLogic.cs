@@ -50,5 +50,10 @@ namespace BusinessLogic.Implementations
 
 			return response;
 		}
-	}
+
+		public MyClientResponse CheckRequestStatus(IMyClient myClient, string requestId)
+		{
+			return null;
+		}
+		}
 }

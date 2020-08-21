@@ -42,5 +42,17 @@ namespace WebApplication1.Controllers
 		{
 			return BusinessLogic.ProcessCallBack(requestId);
 		}
+
+		/// <summary>
+		/// This method will get sattus from third-party service
+		/// for a given request ID
+		/// </summary>
+		/// <param name="requestId">unique reuest Identifier</param>
+		/// <returns>status of request</returns>
+		[HttpGet("Status/{requestId}")]
+		public MyClientResponse CheckRequestStatus(string requestId)
+		{
+			return BusinessLogic.CheckRequestStatus(requestId);
+		}
 	}
 }

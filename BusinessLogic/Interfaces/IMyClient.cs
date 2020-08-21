@@ -8,9 +8,6 @@ namespace BusinessLogic.Interfaces
 	public interface IMyClient
 	{
 		MyClientResponse PostData(MyClientRequest request);
-
-		//MyClientResponses CheckStatus(AutoBookRequest request, AutoBookClientSetupModel settings);
-
-		//MyClientResponses HandleAutoBookRequest(string url, AutoBookRequest abRequest, Method method, AutoBookClientSetupModel settings);
+		MyClientResponse CheckRequestStatus(MyClientRequest request);
 	}
 }

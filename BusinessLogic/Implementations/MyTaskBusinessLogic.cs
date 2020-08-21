@@ -48,5 +48,15 @@ namespace BusinessLogic.Implementations
 			//if no errors then return
 			return "STARTED";
 		}
+
+		/// <summary>
+		/// This method calls third-party service to check status of request
+		/// </summary>
+		/// <param name="requestId">unique identifier for request</param>
+		/// <returns>client response object</returns>
+		public MyClientResponse CheckRequestStatus(string requestId)
+		{
+			return null;
+		}
 	}
 }
