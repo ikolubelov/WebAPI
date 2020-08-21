@@ -29,8 +29,23 @@ namespace BusinessLogic.Implementations
 			return MyClientBusinessLogic.StartPostingProcess(MyClient, request, requestId).Status;
 		}
 
-		public string CallBack(string requestId)
+		/// <summary>
+		/// This method is called by third-party service to
+		/// notify that process started
+		/// </summary>
+		/// <param name="requestId">unique identifier for request</param>
+		/// <returns>status of request</returns>
+		public string ProcessCallBack(string requestId)
 		{
+			//check if requestid is valid
+			if(string.IsNullOrWhiteSpace(requestId))
+			{
+				return "REQUEST DOES NOT EXIST";
+			}
+
+			//i would select request from db by calling repository method
+			//i would update status to "started" and call repository to save new status
+			//if no errors then return
 			return "STARTED";
 		}
 	}

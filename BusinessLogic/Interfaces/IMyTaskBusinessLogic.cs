@@ -9,6 +9,6 @@ namespace BusinessLogic.Interfaces
 	public interface IMyTaskBusinessLogic
 	{
 		string PostData(Request request);
-		string CallBack(string requestId);
+		string ProcessCallBack(string requestId);
 	}
 }

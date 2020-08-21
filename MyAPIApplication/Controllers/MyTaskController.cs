@@ -30,5 +30,17 @@ namespace WebApplication1.Controllers
 		{
 			return BusinessLogic.PostData(request);
 		}
+
+		/// <summary>
+		/// This method will be called by third-party service to notify 
+		/// that request successfuly received and work started
+		/// </summary>
+		/// <param name="requestId">Identifier for which process started</param>
+		/// <returns>status of request</returns>
+		[HttpPost("CallBack/{requestId}")]
+		public string ProcessCallBack(string requestId)
+		{
+			return BusinessLogic.ProcessCallBack(requestId);
+		}
 	}
 }
