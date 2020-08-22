@@ -1,0 +1,8 @@
+C:\Work\Science\POCs\MyAPIApplication\Data\bin\Debug\netcoreapp2.1\Data.deps.json
+C:\Work\Science\POCs\MyAPIApplication\Data\bin\Debug\netcoreapp2.1\Data.dll
+C:\Work\Science\POCs\MyAPIApplication\Data\obj\Debug\netcoreapp2.1\Data.csproj.CoreCompileInputs.cache
+C:\Work\Science\POCs\MyAPIApplication\Data\obj\Debug\netcoreapp2.1\Data.AssemblyInfoInputs.cache
+C:\Work\Science\POCs\MyAPIApplication\Data\obj\Debug\netcoreapp2.1\Data.AssemblyInfo.cs
+C:\Work\Science\POCs\MyAPIApplication\Data\bin\Debug\netcoreapp2.1\Data.pdb
+C:\Work\Science\POCs\MyAPIApplication\Data\obj\Debug\netcoreapp2.1\Data.dll
+C:\Work\Science\POCs\MyAPIApplication\Data\obj\Debug\netcoreapp2.1\Data.pdb

@@ -7,7 +7,7 @@ using BusinessLogic.Implementations;
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers
+namespace WebAPI.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
@@ -26,22 +26,41 @@ namespace WebApplication1.Controllers
 		/// <param name="request">payload details</param>
 		/// <returns>status of request</returns>
 		[HttpPost]
-		public string PostData(Request request)
+		public string Post([FromBody] Request request)
 		{
-			return BusinessLogic.PostData(request);
+			return BusinessLogic.PostData (request);
 		}
 
 		/// <summary>
-		/// This method will be called by third-party service to notify 
+		/// This is callback method used by third-party service to notify 
 		/// that request successfuly received and work started
 		/// </summary>
 		/// <param name="requestId">Identifier for which process started</param>
+		/// <param name="requestStatus">status of request</param>
 		/// <returns>status of request</returns>
-		[HttpPost("CallBack/{requestId}")]
-		public string ProcessCallBack(string requestId)
+		[HttpPost("RequestReceived/{requestId}/{requestStatus}")]
+		public IActionResult Post(string requestId, string requestStatus)
 		{
-			return BusinessLogic.ProcessCallBack(requestId);
+			BusinessLogic.ProcessCallBack(requestId, requestStatus);
+
+			return NoContent();
 		}
+
+		/// <summary>
+		/// This is callback method used by third-party service to send 
+		/// status update for a given request
+		/// </summary>
+		/// <param name="requestId">Identifier for which process started</param>
+		/// <param name="myClientResponse">client response</param>
+		/// <returns>status of request</returns>
+		[HttpPut("UpdateRequestStatus/{requestId}")]
+		public IActionResult UpdateRequest(string requestId, [FromBody] MyClientResponse myClientResponse)
+		{
+			BusinessLogic.UpdateRequestStatus(requestId, myClientResponse);
+
+			return NoContent();
+		}
+
 
 		/// <summary>
 		/// This method will get sattus from third-party service
@@ -50,7 +69,7 @@ namespace WebApplication1.Controllers
 		/// <param name="requestId">unique reuest Identifier</param>
 		/// <returns>status of request</returns>
 		[HttpGet("CheckStatus/{requestId}")]
-		public MyClientResponse CheckRequestStatus(string requestId)
+		public MyClientResponse Get(string requestId)
 		{
 			return BusinessLogic.CheckRequestStatus(requestId);
 		}

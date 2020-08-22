@@ -1,15 +1,3 @@
-C:\Work\Science\POCs\Test2\BusinessLogic\bin\Debug\netcoreapp2.1\BusinessLogic.deps.json
-C:\Work\Science\POCs\Test2\BusinessLogic\bin\Debug\netcoreapp2.1\BusinessLogic.dll
-C:\Work\Science\POCs\Test2\BusinessLogic\bin\Debug\netcoreapp2.1\BusinessLogic.pdb
-C:\Work\Science\POCs\Test2\BusinessLogic\bin\Debug\netcoreapp2.1\Core.dll
-C:\Work\Science\POCs\Test2\BusinessLogic\bin\Debug\netcoreapp2.1\Core.pdb
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.csprojAssemblyReference.cache
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.csproj.CoreCompileInputs.cache
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.AssemblyInfoInputs.cache
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.AssemblyInfo.cs
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.csproj.CopyComplete
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.dll
-C:\Work\Science\POCs\Test2\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.pdb
 C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\BusinessLogic.deps.json
 C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\BusinessLogic.dll
 C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\BusinessLogic.pdb

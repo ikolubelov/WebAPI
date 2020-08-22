@@ -11,11 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WebApplication1.Controllers;
+using WebAPI.Controllers;
 using BusinessLogic.Implementations;
 using BusinessLogic.Service.Client;
+using Data;
 
-namespace WebApplication1
+namespace WebAPI
 {
 	public class Startup
 	{
@@ -30,6 +31,7 @@ namespace WebApplication1
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			services.AddDbContext<ApplicationContext>();
 			services.AddScoped<IMyTaskBusinessLogic, MyTaskBusinessLogic>();
 			services.AddScoped<IMyClientBusinessLogic, MyClientBusinessLogic>();
 			services.AddScoped<IMyClient, MyClient>();

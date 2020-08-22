@@ -28,7 +28,7 @@ namespace BusinessLogic.Implementations
 			var request = new MyClientRequest()
 			{
 				Body = preDefinedRequest,
-				CallBackUrl = $"api/MyTask/CallBack/{requestId}" //Since this is an exercise it is ok to have hard coded values 
+				CallBackUrl = $"api/MyTask/RequestReceived/{requestId}" //Since this is an exercise it is ok to have hard coded values 
 			};
 
 			//calling third party service

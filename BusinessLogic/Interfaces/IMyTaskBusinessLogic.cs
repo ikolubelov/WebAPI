@@ -9,7 +9,8 @@ namespace BusinessLogic.Interfaces
 	public interface IMyTaskBusinessLogic
 	{
 		string PostData(Request request);
-		string ProcessCallBack(string requestId);
+		void ProcessCallBack(string requestId, string status);
 		MyClientResponse CheckRequestStatus(string requestId);
+		void UpdateRequestStatus(string requestId, MyClientResponse myClientResponse);
 	}
 }

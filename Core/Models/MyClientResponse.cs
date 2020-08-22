@@ -17,7 +17,7 @@ namespace Core.Models
 		}
 
 		public MyClientResponseTypes ResponseType { get; set; }
-		public HttpStatusCode Status { get; set; }
+		public HttpStatusCode RequestStatus { get; set; }
 		public string Detail { get; set; }
 		public string Body { get; set; }
 	}

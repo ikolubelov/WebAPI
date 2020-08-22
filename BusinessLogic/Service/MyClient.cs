@@ -32,13 +32,13 @@ namespace BusinessLogic.Service.Client
 			new MyClientResponse(MyClientResponseTypes.Success)
 			{
 				Body = response.Content,
-				Status = HttpStatusCode.OK,
+				RequestStatus = HttpStatusCode.OK,
 				Detail = url
 			} :
 			new MyClientResponse(MyClientResponseTypes.Error)
 			{
 				Body = response.Request.ToString(),
-				Status = response.StatusCode,
+				RequestStatus = response.StatusCode,
 				Detail = response.Content
 			};
 		}
@@ -58,17 +58,17 @@ namespace BusinessLogic.Service.Client
 				case HttpStatusCode.OK:
 					return new MyClientResponse(MyClientResponseTypes.Success)
 					{
-						Status = HttpStatusCode.OK 
+						RequestStatus = HttpStatusCode.OK 
 					};
 				case HttpStatusCode.BadRequest:
 					return new MyClientResponse(MyClientResponseTypes.BadRequest)
 					{
-						Status = HttpStatusCode.BadRequest
+						RequestStatus = HttpStatusCode.BadRequest
 					};
 				default:
 					return new MyClientResponse(MyClientResponseTypes.Error)
 					{
-						Status = HttpStatusCode.InternalServerError
+						RequestStatus = HttpStatusCode.InternalServerError
 					};
 			}
 		}

@@ -1,16 +1,6 @@
-C:\Work\Science\POCs\Test2\Core\bin\Debug\netcoreapp2.1\Core.deps.json
-C:\Work\Science\POCs\Test2\Core\bin\Debug\netcoreapp2.1\Core.dll
-C:\Work\Science\POCs\Test2\Core\bin\Debug\netcoreapp2.1\Core.pdb
-C:\Work\Science\POCs\Test2\Core\obj\Debug\netcoreapp2.1\Core.csprojAssemblyReference.cache
-C:\Work\Science\POCs\Test2\Core\obj\Debug\netcoreapp2.1\Core.csproj.CoreCompileInputs.cache
-C:\Work\Science\POCs\Test2\Core\obj\Debug\netcoreapp2.1\Core.AssemblyInfoInputs.cache
-C:\Work\Science\POCs\Test2\Core\obj\Debug\netcoreapp2.1\Core.AssemblyInfo.cs
-C:\Work\Science\POCs\Test2\Core\obj\Debug\netcoreapp2.1\Core.dll
-C:\Work\Science\POCs\Test2\Core\obj\Debug\netcoreapp2.1\Core.pdb
 C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Core.deps.json
 C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Core.dll
 C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Core.pdb
-C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.csprojAssemblyReference.cache
 C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.csproj.CoreCompileInputs.cache
 C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.AssemblyInfoInputs.cache
 C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.AssemblyInfo.cs

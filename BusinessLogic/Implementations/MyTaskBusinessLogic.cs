@@ -39,20 +39,24 @@ namespace BusinessLogic.Implementations
 		/// </summary>
 		/// <param name="requestId">unique identifier for request</param>
 		/// <returns>status of request</returns>
-		public string ProcessCallBack(string requestId)
+		public void ProcessCallBack(string requestId, string status)
 		{
-			//check if requestid is valid
-			if(string.IsNullOrWhiteSpace(requestId))
-			{
-				return "REQUEST DOES NOT EXIST";
-			}
-
 			//i would select request from db by calling repository method
 			//i would update status to "started" and call repository to save new status
 			//if no errors then return
-			return "STARTED";
 		}
 
+		/// <summary>
+		/// This method is called by third-party service to
+		/// update status for a given request
+		/// </summary>
+		/// <param name="requestId">unique identifier for request</param>
+		/// <returns>response object</returns>
+		public void UpdateRequestStatus(string requestId, MyClientResponse myClientResponse)
+		{
+			
+		}
+		
 		/// <summary>
 		/// This method calls third-party service to check status of request
 		/// </summary>
