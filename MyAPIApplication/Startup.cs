@@ -15,6 +15,9 @@ using WebAPI.Controllers;
 using BusinessLogic.Implementations;
 using BusinessLogic.Service.Client;
 using Data;
+using Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace WebAPI
 {
@@ -31,7 +34,8 @@ namespace WebAPI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-			services.AddDbContext<ApplicationContext>();
+			services.AddDbContext<ApplicationContext>(options => options.UseInMemoryDatabase("MyAPIDB"));
+			services.AddScoped<ApplicationRepository>();
 			services.AddScoped<IMyTaskBusinessLogic, MyTaskBusinessLogic>();
 			services.AddScoped<IMyClientBusinessLogic, MyClientBusinessLogic>();
 			services.AddScoped<IMyClient, MyClient>();

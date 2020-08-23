@@ -1,6 +1,8 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.IO;
 
 namespace Data
 {
@@ -8,12 +10,25 @@ namespace Data
 	{
 		public ApplicationContext(DbContextOptions options)
 			: base(options)
-		{
-			var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = ":memory:" };
-			var connectionString = connectionStringBuilder.ToString();
-			var connection = new SqliteConnection(connectionString);
-		}
+		{}
 
-		public DbSet<DBRequest> DBRequest { get; set; }
+		public DbSet<MyAppRequest> MyAppRequest { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<MyAppRequest>()
+				.Property(e => e.RequestId)
+				.IsUnicode(true);
+
+			modelBuilder.Entity<MyAppRequest>()
+				.Property(e => e.Status)
+				.IsUnicode(false);
+
+			modelBuilder.Entity<MyAppRequest>()
+				.Property(e => e.Details)
+				.IsUnicode(false);
+
+			base.OnModelCreating(modelBuilder);
+		}
 	}
 }

@@ -19,3 +19,5 @@ C:\Work\Science\POCs\MyAPIApplication\MyAPIApplication\obj\Debug\netcoreapp2.1\W
 C:\Work\Science\POCs\MyAPIApplication\MyAPIApplication\obj\Debug\netcoreapp2.1\WebAPI.pdb
 C:\Work\Science\POCs\MyAPIApplication\MyAPIApplication\bin\Debug\netcoreapp2.1\Data.dll
 C:\Work\Science\POCs\MyAPIApplication\MyAPIApplication\bin\Debug\netcoreapp2.1\Data.pdb
+C:\Work\Science\POCs\MyAPIApplication\MyAPIApplication\bin\Debug\netcoreapp2.1\Repository.dll
+C:\Work\Science\POCs\MyAPIApplication\MyAPIApplication\bin\Debug\netcoreapp2.1\Repository.pdb

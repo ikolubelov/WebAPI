@@ -9,6 +9,6 @@ namespace Core.Enums
 		None = 0,
 		Success = 1,
 		BadRequest = 2,
-		Error = 3,
+		Error = 3
 	}
 }

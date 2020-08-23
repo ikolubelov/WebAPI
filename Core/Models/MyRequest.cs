@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-	public class Request
+	public class MyRequest
 	{
 		public string RequestBody { get; set; }
 	}

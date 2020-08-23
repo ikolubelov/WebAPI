@@ -2,7 +2,10 @@
 using System.Net;
 using BusinessLogic.Interfaces;
 using Core.Enums;
+using Core.Mapping;
 using Core.Models;
+using Data;
+using Repository;
 
 namespace BusinessLogic.Implementations
 {
@@ -14,10 +17,14 @@ namespace BusinessLogic.Implementations
 		private readonly IMyClient MyClient;
 		private readonly IMyClientBusinessLogic MyClientBusinessLogic;
 
-		public MyTaskBusinessLogic(IMyClient myClient, IMyClientBusinessLogic myClientBusinessLogic)
+		//ideally we should have interface created for Application Context and ApplicationRepository 
+		private readonly ApplicationRepository Repository;
+
+		public MyTaskBusinessLogic(IMyClient myClient, IMyClientBusinessLogic myClientBusinessLogic, ApplicationRepository repository)
 		{
 			MyClient = myClient;
 			MyClientBusinessLogic = myClientBusinessLogic;
+			Repository = repository;
 		}
 
 		/// <summary>
@@ -25,12 +32,19 @@ namespace BusinessLogic.Implementations
 		/// </summary>
 		/// <param name="request">payload details</param>
 		/// <returns>status of request</returns>
-		public string PostData(Request request)
+		public string PostData(MyRequest request)
 		{
 			//generate unique id
 			var requestId = Guid.NewGuid().ToString();
 
-			return MyClientBusinessLogic.StartPostingProcess(MyClient, request, requestId).ResponseType == MyClientResponseTypes.Success ? "SUCCESS" : "ERROR";
+			//call client to post data (having client object might be overkill for this exercise but in real app it would be recommended)
+			var status = MyClientBusinessLogic.StartPostingProcess(MyClient, request, requestId);
+
+			//saving request details in db
+			Repository.SaveUpdateMyRequest(request.ToDBRequestModel(requestId, status));
+
+			//returning result back to caller 
+			return status ;
 		}
 
 		/// <summary>
@@ -41,9 +55,17 @@ namespace BusinessLogic.Implementations
 		/// <returns>status of request</returns>
 		public void ProcessCallBack(string requestId, string status)
 		{
-			//i would select request from db by calling repository method
-			//i would update status to "started" and call repository to save new status
-			//if no errors then return
+
+			var request = Repository.GetMyRequest(requestId);
+
+			if (request == null)
+			{
+				//log error here and return null back to the caller
+				return;
+			}
+
+			//call repository to update status
+			Repository.SaveUpdateMyRequest(status, requestId);
 		}
 
 		/// <summary>
@@ -52,9 +74,17 @@ namespace BusinessLogic.Implementations
 		/// </summary>
 		/// <param name="requestId">unique identifier for request</param>
 		/// <returns>response object</returns>
-		public void UpdateRequestStatus(string requestId, MyClientResponse myClientResponse)
+		public void SendRequestStatus(string requestId, MyClientAPIResponse myClientAPIResponse)
 		{
-			
+			//here we can check of this is valid request and if it exists in db
+			var request = Repository.GetMyRequest(requestId);
+
+			if (request == null)
+			{
+				//log error here and return null back to the caller
+			}
+
+			Repository.SaveUpdateMyRequest(myClientAPIResponse.ToDBRequestModel(requestId));
 		}
 		
 		/// <summary>
@@ -62,11 +92,24 @@ namespace BusinessLogic.Implementations
 		/// </summary>
 		/// <param name="requestId">unique identifier for request</param>
 		/// <returns>client response object</returns>
-		public MyClientResponse CheckRequestStatus(string requestId)
+		public MyClientAPIResponse CheckRequestStatus(string requestId)
 		{
 			//here we can check of this is valid request and if it exists in db
+			var request = Repository.GetMyRequest(requestId);
 
-			return MyClientBusinessLogic.CheckRequestStatus(MyClient, requestId);
+			if (request == null)
+			{
+				//log error here and return null back to the caller
+			}
+
+			//get status from client
+			var response =  MyClientBusinessLogic.CheckRequestStatus(MyClient, requestId);
+
+			//update request status
+			Repository.SaveUpdateMyRequest(response.ToDBRequestModel(requestId));
+
+			return response;
+
 		}
 	}
 }

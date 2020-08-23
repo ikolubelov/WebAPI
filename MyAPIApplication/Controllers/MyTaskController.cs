@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
 		/// <param name="request">payload details</param>
 		/// <returns>status of request</returns>
 		[HttpPost]
-		public string Post([FromBody] Request request)
+		public string Post([FromBody] MyRequest request)
 		{
 			return BusinessLogic.PostData (request);
 		}
@@ -54,9 +54,9 @@ namespace WebAPI.Controllers
 		/// <param name="myClientResponse">client response</param>
 		/// <returns>status of request</returns>
 		[HttpPut("UpdateRequestStatus/{requestId}")]
-		public IActionResult UpdateRequest(string requestId, [FromBody] MyClientResponse myClientResponse)
+		public IActionResult UpdateRequest(string requestId, [FromBody] MyClientAPIResponse myClientAPIResponse)
 		{
-			BusinessLogic.UpdateRequestStatus(requestId, myClientResponse);
+			BusinessLogic.SendRequestStatus(requestId, myClientAPIResponse);
 
 			return NoContent();
 		}
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers
 		/// <param name="requestId">unique reuest Identifier</param>
 		/// <returns>status of request</returns>
 		[HttpGet("CheckStatus/{requestId}")]
-		public MyClientResponse Get(string requestId)
+		public MyClientAPIResponse Get(string requestId)
 		{
 			return BusinessLogic.CheckRequestStatus(requestId);
 		}

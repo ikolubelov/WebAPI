@@ -6,3 +6,9 @@ C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.Assembly
 C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.AssemblyInfo.cs
 C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.dll
 C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.pdb
+C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.csprojAssemblyReference.cache
+C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Newtonsoft.Json.dll
+C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Newtonsoft.Json.xml
+C:\Work\Science\POCs\MyAPIApplication\Core\obj\Debug\netcoreapp2.1\Core.csproj.CopyComplete
+C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Data.dll
+C:\Work\Science\POCs\MyAPIApplication\Core\bin\Debug\netcoreapp2.1\Data.pdb

@@ -7,8 +7,9 @@ namespace Core.Models
 {
 	public class MyClientRequest
 	{
-		public Request Body { get; set; }
+		public MyRequest Body { get; set; }
 		public string CallBackUrl { get; set; }
 		public string RequestID { get; set; }
+		public string Status { get; set; }
 	}
 }

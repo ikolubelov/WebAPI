@@ -10,3 +10,9 @@ C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\obj\Debug\netcoreapp2.1\Busi
 C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.csproj.CopyComplete
 C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.dll
 C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\obj\Debug\netcoreapp2.1\BusinessLogic.pdb
+C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\Data.dll
+C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\Repository.dll
+C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\Repository.pdb
+C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\Data.pdb
+C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\Newtonsoft.Json.dll
+C:\Work\Science\POCs\MyAPIApplication\BusinessLogic\bin\Debug\netcoreapp2.1\Newtonsoft.Json.xml

@@ -378,6 +378,7 @@
       "BusinessLogic/1.0.0": {
         "dependencies": {
           "Core": "1.0.0",
+          "Repository": "1.0.0",
           "RestSharp": "106.11.4"
         },
         "runtime": {
@@ -388,6 +389,9 @@
         }
       },
       "Core/1.0.0": {
+        "dependencies": {
+          "Data": "1.0.0"
+        },
         "runtime": {
           "Core.dll": {}
         },
@@ -405,6 +409,18 @@
         },
         "compile": {
           "Data.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "dependencies": {
+          "Core": "1.0.0",
+          "Data": "1.0.0"
+        },
+        "runtime": {
+          "Repository.dll": {}
+        },
+        "compile": {
+          "Repository.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.4": {
@@ -3492,6 +3508,11 @@
       "sha512": ""
     },
     "Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
