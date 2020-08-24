@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 using BusinessLogic.Interfaces;
 using Core.Enums;
 using Core.Mapping;
@@ -9,7 +10,7 @@ using Repository;
 
 namespace BusinessLogic.Implementations
 {
-	//This class is intend to handle some business logic before calling Client
+	//This class is intended to handle some business logic before calling Client
 	//This might be an overkill for this exercise.
 	//But the goal is to minimize any business logic in controller and have it in a separate tier.
 	public class MyTaskBusinessLogic : IMyTaskBusinessLogic
@@ -65,23 +66,25 @@ namespace BusinessLogic.Implementations
 			}
 
 			//call repository to update status
-			Repository.SaveUpdateMyRequest(status, requestId);
+			request.Status = status;
+			Repository.SaveUpdateMyRequest(request);
 		}
 
 		/// <summary>
-		/// This method is called by third-party service to
-		/// update status for a given request
+		/// This method updates details for a given request
 		/// </summary>
 		/// <param name="requestId">unique identifier for request</param>
+		/// <param name="myClientAPIResponse">requestDetails</param>
 		/// <returns>response object</returns>
-		public void SendRequestStatus(string requestId, MyClientAPIResponse myClientAPIResponse)
+		public void UpdateRequestStatus(string requestId, MyClientAPIResponse myClientAPIResponse)
 		{
 			//here we can check of this is valid request and if it exists in db
 			var request = Repository.GetMyRequest(requestId);
 
 			if (request == null)
 			{
-				//log error here and return null back to the caller
+				//log and throw error here
+				return;
 			}
 
 			Repository.SaveUpdateMyRequest(myClientAPIResponse.ToDBRequestModel(requestId));
@@ -92,7 +95,7 @@ namespace BusinessLogic.Implementations
 		/// </summary>
 		/// <param name="requestId">unique identifier for request</param>
 		/// <returns>client response object</returns>
-		public MyClientAPIResponse CheckRequestStatus(string requestId)
+		public async Task<MyClientAPIResponse> CheckRequestStatus(string requestId)
 		{
 			//here we can check of this is valid request and if it exists in db
 			var request = Repository.GetMyRequest(requestId);
@@ -100,10 +103,17 @@ namespace BusinessLogic.Implementations
 			if (request == null)
 			{
 				//log error here and return null back to the caller
+				return null;
 			}
 
 			//get status from client
-			var response =  MyClientBusinessLogic.CheckRequestStatus(MyClient, requestId);
+			var response =  await MyClientBusinessLogic.CheckRequestStatus(MyClient, requestId);
+
+			if (response == null)
+			{
+				//log error here and return null back to the caller
+				return null;
+			}
 
 			//update request status
 			Repository.SaveUpdateMyRequest(response.ToDBRequestModel(requestId));

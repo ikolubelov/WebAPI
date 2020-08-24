@@ -25,8 +25,8 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="request">payload details</param>
 		/// <returns>status of request</returns>
-		[HttpPost]
-		public string Post([FromBody] MyRequest request)
+		[HttpPost("PostData")]
+		public string PostData([FromBody] MyRequest request)
 		{
 			return BusinessLogic.PostData (request);
 		}
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
 		/// <param name="requestStatus">status of request</param>
 		/// <returns>status of request</returns>
 		[HttpPost("RequestReceived/{requestId}/{requestStatus}")]
-		public IActionResult Post(string requestId, string requestStatus)
+		public IActionResult RequestReceived(string requestId, string requestStatus)
 		{
 			BusinessLogic.ProcessCallBack(requestId, requestStatus);
 
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
 		[HttpPut("UpdateRequestStatus/{requestId}")]
 		public IActionResult UpdateRequest(string requestId, [FromBody] MyClientAPIResponse myClientAPIResponse)
 		{
-			BusinessLogic.SendRequestStatus(requestId, myClientAPIResponse);
+			BusinessLogic.UpdateRequestStatus(requestId, myClientAPIResponse);
 
 			return NoContent();
 		}
@@ -69,9 +69,9 @@ namespace WebAPI.Controllers
 		/// <param name="requestId">unique reuest Identifier</param>
 		/// <returns>status of request</returns>
 		[HttpGet("CheckStatus/{requestId}")]
-		public MyClientAPIResponse Get(string requestId)
+		public async Task <MyClientAPIResponse> CheckStatus(string requestId)
 		{
-			return BusinessLogic.CheckRequestStatus(requestId);
+			return await BusinessLogic.CheckRequestStatus(requestId);
 		}
 	}
 }

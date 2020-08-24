@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "5d407db46d1e148bccfb20556526b987c4588766"
+    "signature": "469b366de29516509a288567360d21ff2c158135"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,6 @@
           "Core": "1.0.0",
           "Data": "1.0.0",
           "Microsoft.AspNetCore.App": "2.1.0",
-          "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0"
         },
         "runtime": {
@@ -38,7 +37,6 @@
           "WebAPI.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
       "Microsoft.Data.Sqlite.Core/2.1.0": {
         "dependencies": {
           "SQLitePCLRaw.core": "1.1.11"
@@ -539,7 +537,7 @@
           "Microsoft.AspNetCore.NodeServices": "2.1.0",
           "Microsoft.AspNetCore.Owin": "2.1.0",
           "Microsoft.AspNetCore.Razor": "2.1.0",
-          "Microsoft.AspNetCore.Razor.Design": "2.1.2",
+          "Microsoft.AspNetCore.Razor.Design": "2.1.0",
           "Microsoft.AspNetCore.Razor.Language": "2.1.0",
           "Microsoft.AspNetCore.Razor.Runtime": "2.1.0",
           "Microsoft.AspNetCore.ResponseCaching": "2.1.0",
@@ -1125,7 +1123,7 @@
           "Microsoft.AspNetCore.Mvc.RazorPages": "2.1.0",
           "Microsoft.AspNetCore.Mvc.TagHelpers": "2.1.0",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.1.0",
-          "Microsoft.AspNetCore.Razor.Design": "2.1.2",
+          "Microsoft.AspNetCore.Razor.Design": "2.1.0",
           "Microsoft.Extensions.Caching.Memory": "2.1.0",
           "Microsoft.Extensions.DependencyInjection": "2.1.0"
         },
@@ -1328,6 +1326,9 @@
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.dll": {}
         },
+        "compileOnly": true
+      },
+      "Microsoft.AspNetCore.Razor.Design/2.1.0": {
         "compileOnly": true
       },
       "Microsoft.AspNetCore.Razor.Language/2.1.0": {
@@ -3371,13 +3372,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
-      "path": "microsoft.aspnetcore.razor.design/2.1.2",
-      "hashPath": "microsoft.aspnetcore.razor.design.2.1.2.nupkg.sha512"
-    },
     "Microsoft.Data.Sqlite.Core/2.1.0": {
       "type": "package",
       "serviceable": true,
@@ -3992,6 +3986,13 @@
       "sha512": "sha512-UjU3/x0pvaxepPpIqK7I5wFZBfdtSNeNw5KtWq35E/dhOX5OuALdwna19cq3fvjlWThES6G/yPA1kvoZft6nUQ==",
       "path": "microsoft.aspnetcore.razor/2.1.0",
       "hashPath": "microsoft.aspnetcore.razor.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Razor.Design/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2oNNMs9RektIq1u+VrZ1+LEkGK0jNQiwVkI67v8UAn7TApuctEg/jIe5LTnob1fW6MUKsSOULXb+rrY60X67Vw==",
+      "path": "microsoft.aspnetcore.razor.design/2.1.0",
+      "hashPath": "microsoft.aspnetcore.razor.design.2.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/2.1.0": {
       "type": "package",

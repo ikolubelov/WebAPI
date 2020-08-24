@@ -5,42 +5,35 @@ using System.Net;
 using RestSharp;
 using Core.Models;
 using Core.Enums;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace BusinessLogic.Service.Client
 {
 	public class MyClient : IMyClient, IDisposable
 	{
-		public readonly RestClient MyRestClient;
-
-		public MyClient()
-		{
-			MyRestClient = new RestClient();
-		}
-
-		public MyClient(RestClient restClient)
-		{
-			MyRestClient = restClient;
-		}
-
-
-		public MyClientResponse CheckRequestStatus(MyClientRequest request)
+		public async Task<MyClientResponse> CheckRequestStatus(MyClientRequest request)
 		{
 			var url = $"http://example.com/{request.RequestID}";
-			var response = HandleMyClientRequest(url, request, Method.GET);
+			var client = new HttpClient();
 
-			return response.StatusCode == HttpStatusCode.OK ?
+			var response = await client.GetAsync(url);
+
+			//since the reference url is not live - i hardcoded response to OK status 
+			response.StatusCode = HttpStatusCode.OK;
+
+			return response.IsSuccessStatusCode ?
 			new MyClientResponse(MyClientResponseTypes.Success)
 			{
-				RawResponse = response.Content,
+				RawResponse = await response.Content.ReadAsStringAsync(),
 				StatusCode = HttpStatusCode.OK,
 			} :
 			new MyClientResponse(MyClientResponseTypes.Error)
 			{
-				RawResponse = response.StatusDescription,
+				RawResponse = string.Empty,
 				StatusCode = response.StatusCode
 			};
 		}
-
 
 		public MyClientResponse PostData(MyClientRequest request)
 		{
@@ -73,8 +66,8 @@ namespace BusinessLogic.Service.Client
 
 		public IRestResponse HandleMyClientRequest(string url, MyClientRequest clRequest, Method method)
 		{
+			var MyRestClient = new RestClient();
 			MyRestClient.BaseUrl = new Uri(url);
-
 			var request = new RestRequest(method)
 			{
 				ReadWriteTimeout = 3600

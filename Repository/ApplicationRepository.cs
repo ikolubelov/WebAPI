@@ -48,18 +48,5 @@ namespace Repository
 
 			ctx.SaveChanges();
 		}
-
-		/// <summary>
-		/// Saves/updates request details.
-		/// </summary>
-		/// <param name="model">MyApp Request</param>
-		/// <param name="requestId">request identifier.</param>
-		public void SaveUpdateMyRequest(string status, string requestId)
-		{
-			var request = GetMyRequest(requestId);
-			request.Status = status;
-
-			SaveUpdateMyRequest(request);
-		}
 	}
 }

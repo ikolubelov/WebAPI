@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BusinessLogic.Implementations
 {
@@ -60,8 +61,11 @@ namespace BusinessLogic.Implementations
 			return result;
 		}
 
-		public MyClientAPIResponse CheckRequestStatus(IMyClient myClient, string requestId)
+		public async Task<MyClientAPIResponse> CheckRequestStatus(IMyClient myClient, string requestId)
 		{
+			//this is json response object
+			MyClientAPIResponse model = null;
+
 			var request = new MyClientRequest()
 			{
 				RequestID = requestId
@@ -73,13 +77,10 @@ namespace BusinessLogic.Implementations
 			//(since this is exercise table is not created)
 
 			//calling client
-			var response = myClient.CheckRequestStatus(request);
+			var response = await myClient.CheckRequestStatus(request);
 
 			//after response is received we can update certain columns in the table 
 			//(since this is exercise table is not created)
-
-			//this is json response object
-			var apiResponse = new MyClientAPIResponse();
 			
 			//process response
 			if (response.ResponseType == MyClientResponseTypes.BadRequest || response.ResponseType == MyClientResponseTypes.Error)
@@ -90,12 +91,16 @@ namespace BusinessLogic.Implementations
 			}
 			else if (response.ResponseType == MyClientResponseTypes.Success)
 			{
+
+				//since client end point does not exist - i hardcoded json
+				response.RawResponse = "{'Status': 'COMPLETED', 'Detail': 'This is my details', 'Body': 'This is responsebody', 'LastActionDate': '05/05/03' }";
+				
 				//getting data from response
-				apiResponse = (MyClientAPIResponse)JsonConvert.DeserializeObject(response.RawResponse);
+				model = JsonConvert.DeserializeObject<MyClientAPIResponse>(response.RawResponse);
 				
 			}
 
-			return apiResponse;
+			return model;
 		}
 	}
 }
