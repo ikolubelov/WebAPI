@@ -92,7 +92,7 @@ namespace BusinessLogic.Implementations
 			else if (response.ResponseType == MyClientResponseTypes.Success)
 			{
 
-				//since client end point does not exist - i hardcoded json
+				//since client's end point does not exist - i hardcoded json
 				response.RawResponse = "{'Status': 'COMPLETED', 'Detail': 'This is my details', 'Body': 'This is responsebody', 'LastActionDate': '05/05/03' }";
 				
 				//getting data from response
